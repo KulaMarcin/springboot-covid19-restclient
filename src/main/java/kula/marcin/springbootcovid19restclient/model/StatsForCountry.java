@@ -3,7 +3,7 @@ package kula.marcin.springbootcovid19restclient.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class StatsForCountry {
+public class StatsForCountry implements Comparable {
 
     @SerializedName("Country")
     @Expose
@@ -83,4 +83,9 @@ public class StatsForCountry {
         this.date = date;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        StatsForCountry statsForCountry = (StatsForCountry) o;
+        return this.getCases() > statsForCountry.getCases()? -1 : 1;
+    }
 }

@@ -1,0 +1,25 @@
+body {
+    background: url(../img/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.main-column {
+    background-color: white;
+}
+
+.row-style {
+    text-align: center;
+}
+
+.img-style {
+    margin-right: 25px;
+}
+
+.stats-page-style {
+    padding-top: 30px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}

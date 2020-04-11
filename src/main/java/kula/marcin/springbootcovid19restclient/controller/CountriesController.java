@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kula.marcin.springbootcovid19restclient.model.Country;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
@@ -17,18 +18,16 @@ import java.util.List;
 public class CountriesController {
 
     @GetMapping("/countries")
-    public String name() throws IOException {
+    public String name(Model model) throws IOException {
 
         URL url = new URL("https://api.covid19api.com/countries");
         InputStreamReader inputStreamReader = new InputStreamReader(url.openStream());
         Type countryListType = new TypeToken<ArrayList<Country>>(){}.getType();
         List<Country> countries = new Gson().fromJson(inputStreamReader, countryListType);
 
-        for(Country c : countries) {
-            System.out.println(c.getCountry());
-        }
+        model.addAttribute("countries", countries);
 
-        return "test";
+        return "countries";
     }
 
 }
